@@ -3,9 +3,9 @@
 
 makeCacheMatrix <- function(x = matrix()) {
     mat <- is.null(matrix)                ## initialize an empty matrix
-    set <- function(y)  {                         ## y is the argument passed to mCM
-        x <<- y                                    ## set x for the function environment to y
-        mat <<- is.null(matrix)         ## set mat for the mCM environment to y
+    set <- function(y)  {                 ## y is the argument passed to mCM
+        x <<- y                           ## set x for the function environment to y
+        mat <<- is.null(matrix)           ## set mat for the mCM environment to y
     }             
     get <- function() x                            ## create function called get in the mCM env and assign to it
     setinv <- function(inv) mat <<- inv            ## take value and set to mat
@@ -26,6 +26,6 @@ cacheSolve <- function(x, ...) {
         data <- x$get()                            ## if mat does not have a value, pull x into a local variable called data
         mat <- solve(data, ...)                    ## take the inverse of x by calling solve on local data variable
         x$setinv(mat)                              ## assign the calculated inverse to x environment using setinv
-        return(mat)                                        ## Return a matrix that is the inverse of 'x'
+        return(mat)                                ## Return a matrix that is the inverse of 'x'
     }
 }
